@@ -1,0 +1,9 @@
+{
+    "title": "Maxem Smart Energy",
+    "hello": "Hello, __name__",
+    "settings": {
+        "title": "Maxem user account",
+        "subtitle": "Enter your Maxem user account. The app will use this account to communicate with Maxem."
+    }
+}
+

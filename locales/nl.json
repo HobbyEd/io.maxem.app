@@ -1,0 +1,9 @@
+{
+    "title": "Maxem Smart Energy",
+    "hello": "Hallo, __name__",
+    "settings": {
+        "title": "Maxem gebruikersgegevens",
+        "subtitle": "Voer hier je Maxem gegevens in. Deze worden gebruikt om verbinding met de Maxem box op te zetten."
+    }
+}
+

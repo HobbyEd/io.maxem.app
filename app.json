@@ -1,0 +1,22 @@
+{
+    "id": "io.maxem.app",
+    "sdk": 2,
+    "name": {
+        "en": "Maxem smart energy",
+        "nl": "Maxem smart energy"
+    },
+    "description": {
+        "en": "Maxem the solution for a sustainable home!",
+        "nl": "Maxem de energie manager voor een duurzaam huis!"
+    },
+    "category": "energy",
+    "version": "1.0.0",
+    "compatibility": ">=1.5.0",
+    "author": {
+        "name": "Edwin van Dillen",
+        "email": "edwinvandillen@gmail.com"
+    }, 
+    "permissions": [
+        "homey:manager:ledring"
+    ]
+}
