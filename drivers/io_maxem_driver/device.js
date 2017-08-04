@@ -2,8 +2,7 @@
 
 const Homey = require('homey');
 
-class ioMaxemDevice extends Homey.Device {
-
+class io_maxem_device extends Homey.Device {
     // this method is called when the Device is inited
     onInit() {
         this.log('device init');
@@ -11,7 +10,10 @@ class ioMaxemDevice extends Homey.Device {
         this.log('class:', this.getClass());
 
         // register a capability listener
-        this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this))
+        this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
+        
+        let settings = this.getSettings();
+        Homey.log(settings);
     }
 
     // this method is called when the Device is added
@@ -35,7 +37,6 @@ class ioMaxemDevice extends Homey.Device {
         // or, return a Promise
         return Promise.reject( new Error('Switching the device failed!') );
     }
-
 }
 
-module.exports = ioMaxemDevice;
+module.exports = io_maxem_device;

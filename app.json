@@ -21,13 +21,44 @@
     ],
     "drivers":[
         {
-            "id": "io.maxem.driver",
+            "id": "io_maxem_driver",
             "name": {
                 "en": "Driver to communicate with Maxem.io", 
                 "nl": "Driver om met Maxem.io te communiceren"
             }, 
-            "class": "io.maxem.driver", 
+            "class": "io_maxem_driver", 
             "capabilities": ["onoff"]
         }
-    ]
+    ],
+    "flow":{
+        "conditions": [
+            {
+                "id": "is_activated",
+                "title": {
+                    "en": "The Maxem energy box is !{{activated|deactivated}}.", 
+                    "nl": "De Maxem energy box is !{{geactiveerd|gedeactiveerd}}."
+                }, 
+                "args": [
+                    {
+                        "name": "ioMaxemDevice",
+                        "type": "device",
+                        "filter": "driver_id=io.maxem.driver"
+                    }] 
+            }
+        ],
+        "actions":[
+            {
+                "id": "deactivatedMaxem",
+                "title": {
+                    "en": "Deactivate the Maxem energy box from charging your car.",
+                    "nl": "Deactiveer de Maxem energy box, het laden van de auto stopt."
+                },
+                "args": [{
+                    "name": "ioMaxemDevice",
+                    "type": "device",
+                    "filter": "driver_id=io.maxem.driver"
+                }] 
+            }
+        ]
+    }
 }

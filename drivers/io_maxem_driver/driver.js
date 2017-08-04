@@ -6,7 +6,7 @@
 
 const Homey = require('homey');
 
-class ioMaxemDriver extends Homey.Driver {
+class io_maxem_driver extends Homey.Driver {
 
     onPairListDevices( data, callback ){
 
