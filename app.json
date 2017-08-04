@@ -18,5 +18,16 @@
     }, 
     "permissions": [
         "homey:manager:ledring"
+    ],
+    "drivers":[
+        {
+            "id": "io.maxem.driver",
+            "name": {
+                "en": "Driver to communicate with Maxem.io", 
+                "nl": "Driver om met Maxem.io te communiceren"
+            }, 
+            "class": "io.maxem.driver", 
+            "capabilities": ["onoff"]
+        }
     ]
 }
