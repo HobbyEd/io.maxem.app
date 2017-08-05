@@ -60,5 +60,21 @@
                 }] 
             }
         ]
-    }
+    }, 
+    "pair":[
+        {
+            "id": "list_devices",
+            "template": "list_devices", 
+            "navigation": {
+                "next": "add_my_devices"
+            },
+            "options": {
+                        "singular": true
+            }
+        },
+        {
+            "id": "add_devices",
+            "template": "add_devices"
+        }
+    ]
 }
