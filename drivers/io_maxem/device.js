@@ -26,12 +26,12 @@ class io_maxem_device extends Homey.Device {
 
     // this method is called when the Device is added
     onAdded() {
-        this.log('device added');
+        this.log('Maxem added');
     }
 
     // this method is called when the Device is deleted
     onDeleted() {
-        this.log('device deleted');
+        this.log('Maxem deleted');
     }
 
     // this method is called when the Device has requested a state change (turned on or off)

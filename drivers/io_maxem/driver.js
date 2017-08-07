@@ -5,48 +5,49 @@
  */
 
 const Homey = require('homey');
+var Maxem = require('../../lib/maxem.js')
+
+var maxemApi = null
+var maxemboxes = {} // reference to the active maxembox. This reference is only required is there can be more then one maxemboxes. 
 
 class io_maxem_driver extends Homey.Driver {
 
     onPair( socket ) {
+        this.log("onPair is aangeroepen");
+        this.log(maxemboxes);
 
-    var devices = [
-        {
-            "name": "Maxem Smart Energy",
-            "data": { "id": "maxem" }
-        }
-    ]
+        socket.on('start', (data, callback)=>{
+            var username = Homey.ManagerSettings.get('username');
+            var password = Homey.ManagerSettings.get('password');
 
-    socket.on('list_devices', function( data, callback ) {
+            if (!username) return callback('errorNoUsername');
+            if (!password) return callback('errorNoPassword');
+            maxemApi = new Maxem({
+                user: username,
+                password: password 
+            });
+            if (maxemApi.validateAccount())
+                return callback(null)
+            else 
+                callback('errorInvalidSettings')
+        })
 
-        // emit when devices are still being searched
-        socket.emit('list_devices', devices );
-
-        // fire the callback when searching is done
-        callback( null, devices );    
-
-        // when no devices are found, return an empty array
-        callback( null, [] );
-
-        // or fire a callback with Error to show that instead
-        callback( new Error('Something bad has occured!') );        
-
+        socket.on('list_devices', function( data, callback ) {
+            var devices = [ {
+                    "name" : "Maxembox",
+                    "data" : {"id": "maxem"}
+            }]
+            callback(null, devices);
         });
-
-    }
-    onPairListDevices( data, callback ) {
-
-        let devices = [
-            {
-                "name": "Maxem smart energy",
-                "data": { "id": "io_maxem" },
+        
+        socket.on('add_devices', function(device, callback) {
+            maxembox[device.id] = {
+                maxemboxId: device.id, 
+                name: device.name
             }
-        ]
-
-        callback( null, devices );
-
+            callback(null);
+        })
     }
-
 }
 
 module.exports = io_maxem_driver;

@@ -11,6 +11,20 @@
         "account": {
             "clear": "Remove account settings"
         }
-    }
+    }, 
+    "pair": {
+		"start": {
+			"title": "Add Maxem Smart Energy",
+            "intro": "If a valid account is configured in the app settings sections of Homey, the Maxem box will be listed.",
+			"buttonClose": "Close",
+			"messages": {
+				"busyValidation": "Validation account settings...",
+				"busyGetVehicles": "Get Maxem box from account...",
+                "errorNoUsername": "No username configured in the app settings section.",
+                "errorNoPassword": "No password configured in the app settings section",
+				"errorInvalidSettings": "Invalid account configured in the app settings sections."
+			}
+		}
+  }
 }
 
