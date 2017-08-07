@@ -1,6 +1,8 @@
 'use strict';
 
 const Homey = require('homey');
+var userName;
+var password;
 
 class io_maxem_device extends Homey.Device {
     // this method is called when the Device is inited
@@ -13,7 +15,13 @@ class io_maxem_device extends Homey.Device {
         this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
         
         let settings = this.getSettings();
-        Homey.log(settings);
+        this.log(settings);
+        userName = Homey.ManagerSettings.get('username');
+        password = Homey.ManagerSettings.get('password');
+        
+        // #Debug info
+        this.log(userName);
+        this.log(password);
     }
 
     // this method is called when the Device is added

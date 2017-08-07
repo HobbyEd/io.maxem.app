@@ -12,8 +12,8 @@ class io_maxem_driver extends Homey.Driver {
 
     var devices = [
         {
-            "name": "Maxem smart energy",
-            "data": { "id": "io_maxem" }
+            "name": "Maxem Smart Energy",
+            "data": { "id": "maxem" }
         }
     ]
 
@@ -34,7 +34,6 @@ class io_maxem_driver extends Homey.Driver {
         });
 
     }
-    // this is the easiest method to overwrite, when only the template 'Drivers-Pairing-System-Views' is being used.
     onPairListDevices( data, callback ) {
 
         let devices = [

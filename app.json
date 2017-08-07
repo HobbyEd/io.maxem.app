@@ -2,8 +2,8 @@
     "id": "io.maxem.app",
     "sdk": 2,
     "name": {
-        "en": "Maxem smart energy",
-        "nl": "Maxem smart energy"
+        "en": "Maxem Smart Energy",
+        "nl": "Maxem Smart Energy"
     },
     "description": {
         "en": "Maxem the solution for a sustainable home!",
@@ -19,15 +19,39 @@
     "permissions": [
         "homey:manager:ledring"
     ],
+    "images":{
+        "large":"./assets/images/large.jpg",
+        "small":"./assets/images/small.jpg"
+    },
     "drivers":[
         {
-            "id": "io_maxem_driver",
+            "id": "io_maxem",
             "name": {
-                "en": "Driver to communicate with Maxem.io", 
-                "nl": "Driver om met Maxem.io te communiceren"
+                "en": "Maxem.io", 
+                "nl": "Maxem.io"
             }, 
-            "class": "io_maxem_driver", 
-            "capabilities": ["onoff"]
+            "images":{
+                "large":"drivers/io_maxem/assets/images/large.jpg",
+                "small":"drivers/io_maxem/assets/images/small.jpg"
+            },
+            "class": "other", 
+            "capabilities": ["onoff"], 
+            "pair":[
+                {
+                    "id": "start"
+                },
+                {
+                    "id": "list_devices",
+                    "template": "list_devices", 
+                    "navigation": {
+                        "next": "add_maxem"
+                    }
+                },
+                {
+                    "id": "add_maxem",
+                    "template": "add_devices"
+                }
+            ]
         }
     ],
     "flow":{
@@ -60,21 +84,5 @@
                 }] 
             }
         ]
-    }, 
-    "pair":[
-        {
-            "id": "list_devices",
-            "template": "list_devices", 
-            "navigation": {
-                "next": "add_my_devices"
-            },
-            "options": {
-                        "singular": true
-            }
-        },
-        {
-            "id": "add_devices",
-            "template": "add_devices"
-        }
-    ]
+    }
 }
