@@ -3,7 +3,14 @@
     "hello": "Hallo, __name__",
     "settings": {
         "title": "Maxem gebruikersgegevens",
-        "subtitle": "Voer hier je Maxem gegevens in. Deze worden gebruikt om verbinding met de Maxem box op te zetten."
+        "subtitle": "Voer hier je Maxem gegevens in. Deze worden gebruikt om verbinding met de Maxem box op te zetten.",
+        "group": "Account instellingen", 
+        "userName": "Gebruikersnaam", 
+        "password": "Wachtwoord",
+        "save": "Opslaan",
+        "account":{
+            "clear": "Account instellingen verwijderen"
+        }
     }
 }
 

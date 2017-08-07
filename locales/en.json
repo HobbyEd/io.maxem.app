@@ -3,7 +3,14 @@
     "hello": "Hello, __name__",
     "settings": {
         "title": "Maxem user account",
-        "subtitle": "Enter your Maxem user account. The app will use this account to communicate with Maxem."
+        "subtitle": "Enter your Maxem user account. The app will use this account to communicate with Maxem.",
+        "save": "Save", 
+        "group": "Account settings", 
+        "userName": "Username", 
+        "password": "Password",
+        "account": {
+            "clear": "Remove account settings"
+        }
     }
 }
 

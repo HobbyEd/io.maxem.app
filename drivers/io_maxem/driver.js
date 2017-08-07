@@ -38,20 +38,8 @@ class io_maxem_driver extends Homey.Driver {
 
         let devices = [
             {
-                // Required properties: 
                 "name": "Maxem smart energy",
                 "data": { "id": "io_maxem" },
-
-                // Optional properties, these overwrite those specified in app.json:
-                // "icon": "/path/to/another/icon.svg",
-                // "capabilities": [ "onoff", "dim" ],
-                // "capabilitiesOptions: { "onoff": {} },
-                // "mobile": {},
-
-                // Optional properties, device-specific:
-                // "store": { "foo": "bar" },
-                // "settings": {},
-
             }
         ]
 

@@ -7,20 +7,21 @@
         <h1 data-i18n="settings.title"></h1>
         <p data-i18n="settings.subtitle"></p>
         <fieldset>
-            <legend>My Settings</legend>
+            <legend data-i18n="settings.group">Maxem Settings</legend>
 
             <div class="field row">
-                <label for="username">Username</label>
+                <label for="username" data-i18n="settings.userName">Username</label>
                 <input id="username" type="text" value="" />
             </div>
             <div class="field row">
-                <label for="password">Password</label>
+                <label for="password" data-i18n="settings.password">Password</label>
                 <input id="password" type="password" value="" />
             </div>
 
         </fieldset>
 
-        <button id="save" class="right">Save changes</button>
+        <button id="save" class="right" data-i18n="settings.save"></i>Save changes</button>
+        <button id="clearAccount" class="right" data-i18n="settings.account.clear" ></i>clear account settings</button>
 
         <script type="text/javascript">
             function onHomeyReady( Homey ){
@@ -30,6 +31,7 @@
                 var usernameElement = document.getElementById('username');
                 var passwordElement = document.getElementById('password');
                 var saveElement = document.getElementById('save');
+                var clearAccount = document.getElementById('clearAccount');
 
                 Homey.get('username', function( err, username ) {
                 if( err ) return Homey.alert( err );
@@ -49,6 +51,17 @@
                         if(err) return Homey.alert(err);
                     });
                 });
+
+                clearAccount.addEventListener('click',function(e){
+                    Homey.set('username', "", function(err){
+                        if(err) return Homey.alert(err);
+                    usernameElement.value = ""
+                    });
+                    Homey.set('password', "", function(err){
+                        if(err) return Homey.alert(err);
+                    passwordElement.value = ""
+                    })
+                })
             }
         </script>
     </body>
