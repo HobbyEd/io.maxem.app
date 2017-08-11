@@ -8,7 +8,7 @@ const Homey = require('homey');
 var Maxem = require('../../lib/maxem.js')
 
 var maxemApi = null
-var maxemboxes = {} // reference to the active maxembox. This reference is only required is there can be more then one maxemboxes. 
+var maxemboxes = {} // reference to the active maxembox. This reference is only required if there can be more then one maxemboxes. 
 
 class io_maxem_driver extends Homey.Driver {
 
@@ -48,6 +48,21 @@ class io_maxem_driver extends Homey.Driver {
             callback(null);
         })
     }
+
+}
+
+    //This function will change the state of the charging pole 
+io_maxem_driver.prototype.setChargingPoleStatus = function(args){
+    var username = Homey.ManagerSettings.get('username');
+    var password = Homey.ManagerSettings.get('password');
+
+    if (!username) return callback('errorNoUsername');
+    if (!password) return callback('errorNoPassword');
+    maxemApi = new Maxem({
+        user: username,
+        password: password 
+    });
+    return maxemApi.setChargingPoleStatus(args);
 }
 
 module.exports = io_maxem_driver;

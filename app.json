@@ -57,31 +57,48 @@
     "flow":{
         "conditions": [
             {
-                "id": "is_activated",
+                "id": "isChargingPoleActivated",
                 "title": {
                     "en": "The Maxem energy box is !{{activated|deactivated}}.", 
                     "nl": "De Maxem energy box is !{{geactiveerd|gedeactiveerd}}."
                 }, 
                 "args": [
                     {
-                        "name": "ioMaxemDevice",
+                        "name": "device",
                         "type": "device",
-                        "filter": "driver_id=io.maxem.driver"
+                        "filter": "driver_id=io_maxem"
                     }] 
             }
         ],
         "actions":[
             {
-                "id": "deactivatedMaxem",
+                "id": "setChargingPoleState",
                 "title": {
-                    "en": "Deactivate the Maxem energy box from charging your car.",
-                    "nl": "Deactiveer de Maxem energy box, het laden van de auto stopt."
+                    "en": "(de)activate the charger.",
+                    "nl": "(de)activeer de laadpaal."
                 },
                 "args": [{
-                    "name": "ioMaxemDevice",
+                    "name": "device",
                     "type": "device",
-                    "filter": "driver_id=io.maxem.driver"
-                }] 
+                    "filter": "driver_id=io_maxem"
+                },{
+                    "name": "newChargingPoleState",
+                    "type": "dropdown",
+                    "values": [{
+                        "id" : "ACTIVATE",
+                        "label": {
+                            "en": "Activate",
+                            "nl": "Activeer"
+                            } 
+                        }, {
+                        "id": "DEACTIVATE",
+                        "label": {
+                            "en": "De-activate", 
+                            "nl": "Deactiveren"
+                        }
+                    }]
+                }
+            ] 
             }
         ]
     }

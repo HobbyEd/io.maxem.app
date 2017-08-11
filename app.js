@@ -2,13 +2,13 @@
 
 const Homey = require('homey');
 var chargingAnimation = require('./lib/chargingAnimation.js');
+var FlowActions = require ('./lib/flow/actions.js');
 
 class io_Maxem_App extends Homey.App {
 	
 	onInit() {
-		
-		this.log('MyApp is running...');
-		chargingAnimation.init("green");
+		//chargingAnimation.init("green");
+		FlowActions.init()
 	}
 	
 }
