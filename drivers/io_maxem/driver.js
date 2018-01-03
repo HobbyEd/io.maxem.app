@@ -13,31 +13,32 @@ class io_maxem_driver extends Homey.Driver {
 
 	onPair( socket ) {
 		this.log('onPair is aangeroepen');
-		this.log(maxemboxes);
 		socket.on('start', (data, callback)=>{
 			var username = Homey.ManagerSettings.get('username');
 			var password = Homey.ManagerSettings.get('password');
 
 			if (!username) return callback('errorNoUsername');
 			if (!password) return callback('errorNoPassword');
+			
 			maxemApi = new Maxem({
 				email: username,
 				password: password 
 			});
+			
 			//Check whether the user settings are correct
-			if (maxemApi.validateAccount())
-				return callback(null);
+			if (maxemApi.validateAccount()){
+				//The devices are placed in an array show thtat they can be shown in the next step of the wizard
+				//This has been done hire to give the API the time to process. A more rebust implemantation is needed
+				maxemApi.devInfo()
+				return callback(null)
+			}
 			else 
 				callback('errorInvalidSettings');
-			
 		});
 
 		socket.on('list_devices', function( data, callback ) {
-			var devices = [ {
-				'name' : 'Maxembox',
-				'data' : {'id': 'maxem'}
-			}];
-			callback(null, devices);
+			var devices = Homey.ManagerSettings.get("maxem_boxes")
+			callback(null,devices)
 		});
         
 		socket.on('add_devices', function(device, callback) {
@@ -45,6 +46,7 @@ class io_maxem_driver extends Homey.Driver {
 				maxemboxId: device.id, 
 				name: device.name
 			};
+			console.log(maxembox)
 			callback(null);
 		});
 	}
@@ -58,10 +60,11 @@ io_maxem_driver.prototype.setChargingPoleStatus = function(args){
 
 	if (!username) return callback('errorNoUsername');
 	if (!password) return callback('errorNoPassword');
-		maxemApi = new Maxem({
-			email: username,
-			password: password 
-		});
+	
+	maxemApi = new Maxem({
+		email: username,
+		password: password 
+	});
 	return maxemApi.setChargingPoleStatus(args);
 };
 

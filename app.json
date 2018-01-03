@@ -14,7 +14,7 @@
     "compatibility": ">=1.5.0",
     "author": {
         "name": "Edwin van Dillen",
-        "email": "edwinvandillen@gmail.com"
+        "website":"http://github.com/HobbyEd/"
     }, 
     "permissions": [
         "homey:manager:ledring"
