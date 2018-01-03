@@ -21,13 +21,15 @@ class io_maxem_driver extends Homey.Driver {
 			if (!username) return callback('errorNoUsername');
 			if (!password) return callback('errorNoPassword');
 			maxemApi = new Maxem({
-				user: username,
+				email: username,
 				password: password 
 			});
+			//Check whether the user settings are correct
 			if (maxemApi.validateAccount())
 				return callback(null);
 			else 
 				callback('errorInvalidSettings');
+			
 		});
 
 		socket.on('list_devices', function( data, callback ) {
@@ -56,10 +58,10 @@ io_maxem_driver.prototype.setChargingPoleStatus = function(args){
 
 	if (!username) return callback('errorNoUsername');
 	if (!password) return callback('errorNoPassword');
-	maxemApi = new Maxem({
-		user: username,
-		password: password 
-	});
+		maxemApi = new Maxem({
+			email: username,
+			password: password 
+		});
 	return maxemApi.setChargingPoleStatus(args);
 };
 
