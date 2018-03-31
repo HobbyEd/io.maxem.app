@@ -1,16 +1,15 @@
 'use strict';
 
 const Homey = require('homey');
-//var userName;
-//var password;
+
 
 class io_maxem_device extends Homey.Device {
 	// this method is called when the Device is inited
 	onInit() {
 		// register a capability listener
 		this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
-//		userName = Homey.ManagerSettings.get('username');
-//		password = Homey.ManagerSettings.get('password');
+		//store the device name in the session so the Maxem Driver can pick it up. 
+		Homey.ManagerSettings.set('active_maxem', this.getName())
 	}
 
 	// this method is called when the Device is added
@@ -25,7 +24,6 @@ class io_maxem_device extends Homey.Device {
 	onCapabilityOnoff( value, opts, callback ) {
 		// Then, emit a callback ( err, result )
 		callback( null );
-
 		// or, return a Promise
 		return Promise.reject( new Error('Switching the device failed!') );
 	}
