@@ -27,7 +27,7 @@ class io_maxem_driver extends Homey.Driver {
 			
 			//Check whether the user settings are correct
 			if (maxemApi.validateAccount()){
-				//The devices are placed in an array show thtat they can be shown in the next step of the wizard
+				//The devices are placed in an array show that they can be shown in the next step of the wizard
 				//This has been done hire to give the API the time to process. A more rebust implemantation is needed
 				maxemApi.devInfo()
 				return callback(null)
