@@ -12,7 +12,6 @@ var maxemboxes = {}; // reference to the active maxembox. This reference is only
 class io_maxem_driver extends Homey.Driver {
 
 	onPair( socket ) {
-		this.log('onPair is aangeroepen');
 		socket.on('start', (data, callback)=>{
 			var username = Homey.ManagerSettings.get('username');
 			var password = Homey.ManagerSettings.get('password');
