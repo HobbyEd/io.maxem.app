@@ -9,15 +9,14 @@
         "en": "Maxem the solution for a sustainable home!",
         "nl": "Maxem de energie manager voor een duurzaam huis!"
     },
-    "category": "energy",
-    "version": "0.4.2",
+    "category": "tools",
+    "version": "0.4.3",
     "compatibility": ">=1.5.0",
     "author": {
         "name": "Edwin van Dillen",
         "website":"http://github.com/HobbyEd/"
     }, 
     "permissions": [
-        "homey:manager:ledring"
     ],
     "images":{
         "large":"./assets/images/large.jpg",

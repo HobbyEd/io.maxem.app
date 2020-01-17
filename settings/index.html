@@ -17,11 +17,10 @@
                 <label for="password" data-i18n="settings.password">Password</label>
                 <input id="password" type="password" value="" />
             </div>
-
         </fieldset>
 
         <button id="save" class="right" data-i18n="settings.save"></i>Save changes</button>
-        <button id="clearAccount" class="right" data-i18n="settings.account.clear" ></i>clear account settings</button>
+        <!--<button id="clearAccount" class="right" data-i18n="settings.account.clear" ></i>clear account settings</button>-->
 
         <script type="text/javascript">
             function onHomeyReady( Homey ){
@@ -50,6 +49,7 @@
                     Homey.set('password', passwordElement.value, function(err){
                         if(err) return Homey.alert(err);
                     });
+                    Homey.alert("Saved.");
                 });
 
                 clearAccount.addEventListener('click',function(e){
@@ -61,6 +61,7 @@
                         if(err) return Homey.alert(err);
                     passwordElement.value = ""
                     })
+                    
                 })
             }
         </script>

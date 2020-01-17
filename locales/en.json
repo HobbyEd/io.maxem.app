@@ -9,7 +9,8 @@
         "userName": "Username", 
         "password": "Password",
         "account": {
-            "clear": "Remove account settings"
+            "clear": "Remove account settings",
+            "save" : "Account information has been saved."
         }
     }, 
     "pair": {
@@ -18,6 +19,7 @@
             "intro": "If a valid account is configured in the app settings sections of Homey, the Maxem box will be listed.",
 			"buttonClose": "Close",
 			"messages": {
+                "accountSaved": "Account information has been saved.",
 				"busyValidation": "Validation account settings...",
 				"busyGetVehicles": "Get Maxem box from account...",
                 "errorNoUsername": "No username configured in the app settings section.",
