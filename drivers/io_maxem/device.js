@@ -2,7 +2,6 @@
 
 const Homey = require('homey');
 
-
 class io_maxem_device extends Homey.Device {
 	// this method is called when the Device is inited
 	onInit() {
@@ -23,9 +22,16 @@ class io_maxem_device extends Homey.Device {
 	// this method is called when the Device has requested a state change (turned on or off)
 	onCapabilityOnoff( value, opts, callback ) {
 		// Then, emit a callback ( err, result )
-		callback( null );
-		// or, return a Promise
-		return Promise.reject( new Error('Switching the device failed!') );
+		var driver = Homey.ManagerDrivers.getDriver("io_maxem");
+		var status 
+		if (value == true){
+			status = { newChargingPoleState: 'ACTIVATE'};
+		}
+		else {
+			status = { newChargingPoleState: 'DEACTIVATE'};
+		}
+		driver.setChargingPoleStatus(status);
+		return Promise.resolve();
 	}
 }
 

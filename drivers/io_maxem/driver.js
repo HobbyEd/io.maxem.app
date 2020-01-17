@@ -32,7 +32,7 @@ class io_maxem_driver extends Homey.Driver {
 				return callback(null)
 			}
 			else 
-				callback('errorInvalidSettings');
+				callback({err: 'errorInvalidSettings'});
 		});
 
 		socket.on('list_devices', function( data, callback ) {
