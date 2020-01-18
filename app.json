@@ -1,104 +1,111 @@
 {
-    "id": "io.maxem.app",
-    "sdk": 2,
-    "name": {
-        "en": "Maxem Smart Energy",
-        "nl": "Maxem Smart Energy"
-    },
-    "description": {
-        "en": "Maxem the solution for a sustainable home!",
-        "nl": "Maxem de energie manager voor een duurzaam huis!"
-    },
-    "category": "tools",
-    "version": "0.4.3",
-    "compatibility": ">=1.5.0",
-    "author": {
-        "name": "Edwin van Dillen",
-        "website":"http://github.com/HobbyEd/"
-    }, 
-    "permissions": [
-    ],
-    "images":{
-        "large":"./assets/images/large.jpg",
-        "small":"./assets/images/small.jpg"
-    },
-    "drivers":[
+  "id": "io.maxem.app",
+  "sdk": 2,
+  "name": {
+    "en": "Maxem Smart Energy",
+    "nl": "Maxem Smart Energy"
+  },
+  "description": {
+    "en": "Maxem the solution for a sustainable home!",
+    "nl": "Maxem de energie manager voor een duurzaam huis!"
+  },
+  "category": "tools",
+  "version": "0.4.7",
+  "compatibility": ">=1.5.0",
+  "author": {
+    "name": "Edwin van Dillen",
+    "website": "http://github.com/HobbyEd/"
+  },
+  "permissions": [],
+  "images": {
+    "large": "./assets/images/large.jpg",
+    "small": "./assets/images/small.jpg"
+  },
+  "drivers": [
+    {
+      "id": "io_maxem",
+      "name": {
+        "en": "Maxem.io",
+        "nl": "Maxem.io"
+      },
+      "images": {
+        "large": "drivers/io_maxem/assets/images/large.jpg",
+        "small": "drivers/io_maxem/assets/images/small.jpg"
+      },
+      "class": "other",
+      "capabilities": [
+        "onoff"
+      ],
+      "pair": [
         {
-            "id": "io_maxem",
-            "name": {
-                "en": "Maxem.io", 
-                "nl": "Maxem.io"
-            }, 
-            "images":{
-                "large":"drivers/io_maxem/assets/images/large.jpg",
-                "small":"drivers/io_maxem/assets/images/small.jpg"
-            },
-            "class": "other", 
-            "capabilities": ["onoff"], 
-            "pair":[
-                {
-                    "id": "start"
-                },
-                {
-                    "id": "list_devices",
-                    "template": "list_devices", 
-                    "navigation":{
-                        "next" : "add_devices"
-                    }
-                }, 
-                {
-                    "id": "add_devices", 
-                    "template": "add_devices"
-                }
-            ]
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
         }
-    ],
-    "flow":{
-        "conditions": [
-            {
-                "id": "isChargingPoleActivated",
-                "title": {
-                    "en": "Charging pole is !{{activated|deactivated}}.", 
-                    "nl": "Laadpaal is !{{geactiveerd|gedeactiveerd}}."
-                }, 
-                "args": [
-                    {
-                        "name": "device",
-                        "type": "device",
-                        "filter": "driver_id=io_maxem"
-                    }] 
-            }
-        ],
-        "actions":[
-            {
-                "id": "setChargingPoleState",
-                "title": {
-                    "en": "(de)activate the charger.",
-                    "nl": "(de)activeer de laadpaal."
-                },
-                "args": [{
-                    "name": "device",
-                    "type": "device",
-                    "filter": "driver_id=io_maxem"
-                },{
-                    "name": "newChargingPoleState",
-                    "type": "dropdown",
-                    "values": [{
-                        "id" : "ACTIVATE",
-                        "label": {
-                            "en": "Activate",
-                            "nl": "Activeer"
-                            } 
-                        }, {
-                        "id": "DEACTIVATE",
-                        "label": {
-                            "en": "De-activate", 
-                            "nl": "Deactiveren"
-                        }
-                    }]
-                }
-            ] 
-            }
-        ]
+      ]
     }
+  ],
+  "flow": {
+    "conditions": [
+      {
+        "id": "isChargingPoleActivated",
+        "title": {
+          "en": "Charging pole is !{{activated|deactivated}}.",
+          "nl": "Laadpaal is !{{geactiveerd|gedeactiveerd}}."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=io_maxem"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "setChargingPoleState",
+        "title": {
+          "en": "(de)activate the charger.",
+          "nl": "(de)activeer de laadpaal."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=io_maxem"
+          },
+          {
+            "name": "newChargingPoleState",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "ACTIVATE",
+                "label": {
+                  "en": "Activate",
+                  "nl": "Activeer"
+                }
+              },
+              {
+                "id": "DEACTIVATE",
+                "label": {
+                  "en": "De-activate",
+                  "nl": "Deactiveren"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
