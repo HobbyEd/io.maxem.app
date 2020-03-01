@@ -7,7 +7,7 @@ const Homey = require('homey');
 var Maxem = require('../../lib/maxem.js');
 
 var maxemApi = null;
-var maxemboxes = {}; // reference to the active maxembox. This reference is only required if there can be more then one maxemboxes. 
+//var maxemboxes = {}; // reference to the active maxembox. This reference is only required if there can be more then one maxemboxes. 
 
 class io_maxem_driver extends Homey.Driver {
 
@@ -26,18 +26,16 @@ class io_maxem_driver extends Homey.Driver {
 			
 			//Check whether the user settings are correct
 			if (maxemApi.validateAccount()){
-				//The devices are placed in an array show that they can be shown in the next step of the wizard
-				//This has been done hire to give the API the time to process. A more rebust implemantation is needed
-				maxemApi.devInfo()
 				return callback(null)
 			}
 			else 
 				callback({err: 'errorInvalidSettings'});
 		});
 
-		socket.on('list_devices', function( data, callback ) {
-			var devices = Homey.ManagerSettings.get("maxem_boxes")
-			callback(null,devices)
+		socket.on('list_devices', function( data, callback ) {			
+			maxemApi.devInfo().then(function(maxem_boxes){
+				return callback(null, maxem_boxes)
+			})
 		});
         
 		socket.on('add_devices', function(device, callback) {
@@ -45,7 +43,6 @@ class io_maxem_driver extends Homey.Driver {
 				maxemboxId: device.id, 
 				name: device.name
 			};
-			console.log(maxembox)
 			callback(null);
 		});
 	}

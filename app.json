@@ -10,7 +10,7 @@
     "nl": "Maxem de energie manager voor een duurzaam huis!"
   },
   "category": "tools",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Edwin van Dillen",
