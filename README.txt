@@ -1,4 +1,3 @@
-Maxem Smart Energy
 This app adds support for Maxem.io Smart Energy box to Athom Homey.
 
 Functions
