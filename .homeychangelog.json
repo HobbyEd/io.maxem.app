@@ -7,8 +7,8 @@
     "en": "Bugfix: solved error when adding a new device if the app runs Homey V3.x. Functionality: added the Turn on and Turn off functions which can be used in a flow. Tested on Homey 3.2.0" ,
     "nl": "Bugfix: Bug verholpen die op trad tijdens het toevoegen van een nieuw device. Functionaliteit: toegevoegd de optie om Tun on and Turn off te gebruiken in a flow. Getest op Homey 3.2.0 "
   }, 
-  "0.5.0":{
+  "0.5.2":{
     "en": "Bugfix: issue with adding new device fixed. It works robust now. " ,
-    "nl": "Bugfix: Bug verholpen die op trad tijdens het toevoegen van een nieuw device. Werkt nu robust."
+    "nl": "Bugfix: Bug verholpen die op trad tijdens het toevoegen van een nieuw device. Werkt nu robuust."
   }
 }

@@ -34,7 +34,10 @@ class io_maxem_driver extends Homey.Driver {
 
 		socket.on('list_devices', function( data, callback ) {			
 			maxemApi.devInfo().then(function(maxem_boxes){
-				return callback(null, maxem_boxes)
+				if (maxem_boxes == "")
+					return callback(new Error("Something went wrong in the communication. Please retry to connect in a few seconds."))
+				else 
+					return callback(null, maxem_boxes)
 			})
 		});
         
