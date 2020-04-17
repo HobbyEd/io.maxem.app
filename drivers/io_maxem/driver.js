@@ -7,7 +7,6 @@ const Homey = require('homey');
 var Maxem = require('../../lib/maxem.js');
 
 var maxemApi = null;
-//var maxemboxes = {}; // reference to the active maxembox. This reference is only required if there can be more then one maxemboxes. 
 
 class io_maxem_driver extends Homey.Driver {
 
@@ -33,7 +32,7 @@ class io_maxem_driver extends Homey.Driver {
 		});
 
 		socket.on('list_devices', function( data, callback ) {			
-			maxemApi.devInfo().then(function(maxem_boxes){
+			maxemApi.deviceInfo().then(function(maxem_boxes){
 				if (maxem_boxes == "")
 					return callback(new Error("Something went wrong in the communication. Please retry to connect in a few seconds."))
 				else 
