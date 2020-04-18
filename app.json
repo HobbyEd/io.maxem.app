@@ -21,6 +21,30 @@
     "large": "./assets/images/large.jpg",
     "small": "./assets/images/small.jpg"
   },
+  "capabilities": {
+    "charge_pole": {
+      "type": "boolean",
+      "title": {
+        "en": "Charge pole",
+        "nl": "Laadpaal"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "icon": ""
+    },
+    "solar_charge": {
+      "type": "boolean",
+      "title": {
+        "en": "Solar charge",
+        "nl": "Laden op zonnepanelen"
+      },
+      "uiComponent": "toggle",
+      "getable": true,
+      "setable": true,
+      "icon": ""
+    }
+  },
   "drivers": [
     {
       "id": "io_maxem",
@@ -34,7 +58,7 @@
       },
       "class": "other",
       "capabilities": [
-        "onoff"
+        "charge_pole", "solar_charge"
       ],
       "pair": [
         {
@@ -86,6 +110,40 @@
           },
           {
             "name": "newChargingPoleState",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "ACTIVATE",
+                "label": {
+                  "en": "Activate",
+                  "nl": "Activeer"
+                }
+              },
+              {
+                "id": "DEACTIVATE",
+                "label": {
+                  "en": "De-activate",
+                  "nl": "Deactiveren"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "setSolareChargeState",
+        "title": {
+          "en": "(de)activate the charging on solar.",
+          "nl": "(de)activeer laden op zonnepanelen."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=io_maxem"
+          },
+          {
+            "name": "newSolarChargeState",
             "type": "dropdown",
             "values": [
               {

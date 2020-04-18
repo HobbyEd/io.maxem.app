@@ -12,16 +12,7 @@ class io_maxem_driver extends Homey.Driver {
 
 	onPair( socket ) {
 		socket.on('start', (data, callback)=>{
-			var username = Homey.ManagerSettings.get('username');
-			var password = Homey.ManagerSettings.get('password');
-
-			if (!username) return callback('errorNoUsername');
-			if (!password) return callback('errorNoPassword');
-			
-			maxemApi = new Maxem({
-				email: username,
-				password: password 
-			});
+			var maxemApi = getMaxemInstance()
 			
 			//Check whether the user settings are correct
 			if (maxemApi.validateAccount()){
@@ -51,19 +42,29 @@ class io_maxem_driver extends Homey.Driver {
 
 }
 
-//This function will change the state of the charging pole 
+//This function will ask the Maxem driver to change the status  
 io_maxem_driver.prototype.setChargingPoleStatus = function(args){
+	var maxemApi = getMaxemInstance()
+	return maxemApi.setChargingPoleStatus(args);
+};
+
+//This function will ask the Maxem driver to change the status 
+io_maxem_driver.prototype.setSolarChargeStatus = function(args){
+	var maxemApi = getMaxemInstance()
+	return maxemApi.setSolarChargeStatus(args);
+};
+
+function getMaxemInstance()
+{
 	var username = Homey.ManagerSettings.get('username');
 	var password = Homey.ManagerSettings.get('password');
 
 	if (!username) return callback('errorNoUsername');
 	if (!password) return callback('errorNoPassword');
 	
-	maxemApi = new Maxem({
+	return new Maxem({
 		email: username,
 		password: password 
 	});
-	return maxemApi.setChargingPoleStatus(args);
-};
-
+}
 module.exports = io_maxem_driver;
